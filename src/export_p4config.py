@@ -2,12 +2,11 @@
 from __future__ import print_function
 
 import os
-import sys
 import argparse
 import socket
 
 
-def export_p4_config(ws_root, port, ws, user):
+def export_p4_config(ws_root, port, ws, user, ignore_filename):
     config_filename = ".p4config"
     config_filepath = os.path.join(ws_root, config_filename)
     lines = [
@@ -15,6 +14,7 @@ def export_p4_config(ws_root, port, ws, user):
         "P4CLIENT={}\n".format(ws),
         "P4USER={}\n".format(user),
         "P4HOST={}\n".format(socket.gethostname()),
+        "P4IGNORE={}\n".format(ignore_filename),
     ]
 
     if os.path.exists(config_filepath):
@@ -31,6 +31,7 @@ if __name__ == "__main__":
     parser.add_argument("port")
     parser.add_argument("ws")
     parser.add_argument("user")
+    parser.add_argument("ignore_filename")
 
     parsed_args = parser.parse_args()
 
@@ -39,4 +40,5 @@ if __name__ == "__main__":
         parsed_args.port,
         parsed_args.ws,
         parsed_args.user,
+        parsed_args.ignore_filename,
     )

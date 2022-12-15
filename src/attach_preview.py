@@ -17,7 +17,7 @@ def attach_preview_attr(selected_asset, img_path):
         hex_string = binascii.hexlify(f.read())
         for attr in ["preview", "thumb"]:
             p = subprocess.Popen(
-                ["p4", "attribute", "-fei", "-n", attr, file_name],
+                ["p4", "attribute", "-ei", "-n", attr, file_name],
                 stdout=subprocess.PIPE,
                 stdin=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
