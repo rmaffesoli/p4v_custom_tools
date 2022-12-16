@@ -141,7 +141,8 @@ def export_p4_config(ws_root, port, ws, user):
     ]
 
     if os.path.exists(config_filepath):
-        os.remove(config_filepath)
+        print(".p4config already exists")
+        return
 
     with open(config_filepath, "w") as config_buffer:
         config_buffer.writelines(lines)
@@ -156,7 +157,8 @@ def export_p4_ignore(ws_root, ue_project_name):
     ]
 
     if os.path.exists(ignore_filepath):
-        os.remove(ignore_filepath)
+        print(".p4ignore already exists")
+        return
 
     with open(ignore_filepath, "w") as ignore_buffer:
         ignore_buffer.writelines(lines)

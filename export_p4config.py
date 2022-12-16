@@ -18,7 +18,8 @@ def export_p4_config(ws_root, port, ws, user, ignore_filename):
     ]
 
     if os.path.exists(config_filepath):
-        os.remove(config_filepath)
+        print(".p4config already exists")
+        return
 
     with open(config_filepath, "w") as config_buffer:
         config_buffer.writelines(lines)
