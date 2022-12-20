@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--perforce-xml-version=1.0-->
+<CustomToolDefList varName="customtooldeflist">
+ <CustomToolDef>
+  <Definition>
+   <Name>Export default workspace p4config</Name>
+   <Command>python</Command>
+   <Arguments>YOUR_PATH/p4v_custom_tools/export_p4config.py $r $p $c $u</Arguments>
+   <Shortcut></Shortcut>
+  </Definition>
+  <AddToContext>true</AddToContext>
+ </CustomToolDef>
+ <CustomToolDef>
+  <Definition>
+   <Name>Attach preview image</Name>
+   <Command>python</Command>
+   <Arguments>YOUR_PATH/p4v_custom_tools/attach_preview.py %f</Arguments>
+   <Shortcut></Shortcut>
+  </Definition>
+  <Prompt>
+   <PromptText>Image filepath</PromptText>
+   <ShowBrowse>true</ShowBrowse>
+  </Prompt>
+  <Console>
+   <CloseOnExit>false</CloseOnExit>
+  </Console>
+  <AddToContext>true</AddToContext>
+  <Refresh>true</Refresh>
+ </CustomToolDef>
+ <CustomToolDef>
+  <Definition>
+   <Name>Setup for Unreal</Name>
+   <Command>python</Command>
+   <Arguments>YOUR_PATH/p4v_custom_tools/setup_for_unreal.py $r $p $c $u</Arguments>
+   <Shortcut></Shortcut>
+  </Definition>
+  <Prompt>
+   <PromptText>Unreal Project Name</PromptText>
+  </Prompt>
+  <Console>
+   <CloseOnExit>false</CloseOnExit>
+  </Console>
+  <Refresh>true</Refresh>
+ </CustomToolDef>
+ <CustomToolDef>
+  <Definition>
+   <Name>Setup for Unity</Name>
+   <Command>python</Command>
+   <Arguments>YOUR_PATH/p4v_custom_tools/setup_for_unity.py $r $p $c $u</Arguments>
+   <Shortcut></Shortcut>
+  </Definition>
+  <Console>
+   <CloseOnExit>false</CloseOnExit>
+  </Console>
+  <Refresh>true</Refresh>
+ </CustomToolDef>
+</CustomToolDefList>
