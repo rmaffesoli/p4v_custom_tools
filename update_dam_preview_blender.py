@@ -58,7 +58,7 @@ def generate_preview(img_path):
                                     "window": window,
                                 }
                                 bpy.ops.screen.screenshot(
-                                    L_altBpyCtx, filepath=img_path, full=False
+                                    L_altBpyCtx, filepath=img_path
                                 )
                                 break
                         break
