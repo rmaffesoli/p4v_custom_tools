@@ -32,7 +32,7 @@ if __name__ == "__main__":
     parser.add_argument("port")
     parser.add_argument("ws")
     parser.add_argument("user")
-    parser.add_argument("ignore_filename")
+    parser.add_argument("ignore_filename", nargs="?", default=None, const=".p4ignore")
 
     parsed_args = parser.parse_args()
 

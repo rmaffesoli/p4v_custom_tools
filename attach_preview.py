@@ -15,14 +15,21 @@ def attach_preview_attr(selected_asset, img_path):
     file_dir, file_name = os.path.split(selected_asset)
     with open(img_path, "rb") as f:
         hex_string = binascii.hexlify(f.read())
-        for attr in ["preview", "thumb"]:
+
+        for attr in ["preview", "thumb", "blur"]:
+            commands = ["p4", "attribute", "-fei", "-n", attr, file_name]
+
+            if attr == "blur":
+                commands = ["p4", "attribute", "-fi", "-n", attr, file_name]
+                hex_string = bytes("U4DbZs009u=X7O9a599t=EtQ~U-U01~C0Mxa", "utf-8")
             p = subprocess.Popen(
-                ["p4", "attribute", "-ei", "-n", attr, file_name],
+                commands,
                 stdout=subprocess.PIPE,
                 stdin=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 cwd=file_dir,
             )
+
             attr_stdout = p.communicate(input=hex_string)[0]
             print(attr_stdout.decode())
 
