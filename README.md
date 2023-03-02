@@ -68,7 +68,7 @@ Creates a basic .p4config file for the currently active workspace. If an existin
 
 #### Usage
 
-This script can be used from P4V to attach a give image to a selected workspace file as a preview. The user runs the tool with a current selection (single file) and will be prompted to provide the image path via dialog.
+This script can be used from P4V to attach a given image to a selected workspace file as a preview. The user runs the tool with a current selection (single file) and will be prompted to provide the image path via dialog.
 
 #### Arguments
 
@@ -112,3 +112,21 @@ Intended to be run as a custom script in Blender. When clicked while you have a 
 #### Arguments
 
 None. The current open scene name will be used.
+
+---
+
+## update_dam_preview_vector.py
+
+
+#### Usage
+
+This script can be used from P4V to render a thumbnail and preview images for both EPS and SVG files. The user runs the tool with a current selection and the attributes will be attached to the current version in Helix Core to be displayed within HelixDAM.
+
+To Note: This tool requires a few python libraries and dependencies to operate correctly.
+Pillow, svglib, and ghostscript.
+
+If working with windows, you may need to install the GhostScript executables as  pillow's eps implentation looks to your PATH env var for the executables.
+
+#### Arguments
+
+1. Selected filepath from P4V interface
