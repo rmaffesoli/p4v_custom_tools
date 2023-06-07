@@ -20,8 +20,7 @@ P4USER = "rmaffesoli"
 
 p4 = P4()
 p4.charset = "auto"
-p4.ticket = "1746DF240FB691B7ABD9BD27A0BA95E4"
-p4.password = "1746DF240FB691B7ABD9BD27A0BA95E4"
+p4.password = ""
 p4.connect()
 p4.run_login()
 
@@ -95,9 +94,9 @@ def main(changelist):
     description = p4.run_describe(changelist)
     for file in description[0]["depotFile"]:
         if file.endswith(".svg"):
-            gen_eps_dam_preview_attr(f"{file}@{changelist}")
-        elif file.endswith(".eps"):
             gen_svg_dam_thumb_attr(f"{file}@{changelist}")
+        elif file.endswith(".eps"):
+            gen_eps_dam_preview_attr(f"{file}@{changelist}")
 
 
 if __name__ == "__main__":
