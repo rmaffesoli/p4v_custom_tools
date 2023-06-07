@@ -19,6 +19,7 @@ P4PORT = "ssl:192.168.0.32:1666"
 P4USER = "rmaffesoli"
 
 p4 = P4()
+p4.charset = "auto"
 p4.connect()
 
 
