@@ -20,6 +20,7 @@ P4USER = "rmaffesoli"
 
 p4 = P4()
 p4.charset = "auto"
+p4.password = "1746DF240FB691B7ABD9BD27A0BA95E4"
 p4.connect()
 
 
