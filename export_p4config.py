@@ -15,6 +15,7 @@ def export_p4_config(ws_root, port, ws, user, ignore_filename):
         "P4USER={}\n".format(user),
         "P4HOST={}\n".format(socket.gethostname()),
         "P4IGNORE={}\n".format(ignore_filename),
+        "P4CHARSET=none",
     ]
 
     if os.path.exists(config_filepath):
