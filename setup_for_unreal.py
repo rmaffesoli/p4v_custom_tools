@@ -202,7 +202,7 @@ def setup_p4_typemap(ws_root):
 def setup_for_unreal(ws_root, port, ws, user, ue_project_name):
     export_p4_config(ws_root, port, ws, user)
     export_p4_ignore(ws_root, ue_project_name)
-    setup_p4_typemap(ws_root)
+    #setup_p4_typemap(ws_root)
 
 
 if __name__ == "__main__":
