@@ -19,6 +19,7 @@ default_ue_p4ignore = [
     "**.tmp",
     "**.mdb",
     "obj/",
+    ".p4config",
     "**.vcxproj",
     "**.sln",
     "**-Debug.*",
