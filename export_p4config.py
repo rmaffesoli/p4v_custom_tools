@@ -6,8 +6,9 @@ import argparse
 import socket
 
 
-def export_p4_config(ws_root, port, ws, user, ignore_filename):
+def export_p4_config(ws_root, port, ws, user):
     config_filename = ".p4config"
+    ignore_filename=".p4ignore"
     config_filepath = os.path.join(ws_root, config_filename)
     lines = [
         "P4PORT={}\n".format(port),
@@ -33,8 +34,6 @@ if __name__ == "__main__":
     parser.add_argument("port")
     parser.add_argument("ws")
     parser.add_argument("user")
-    parser.add_argument("ignore_filename", nargs="?", default=None, const=".p4ignore")
-
     parsed_args = parser.parse_args()
 
     export_p4_config(
@@ -42,5 +41,4 @@ if __name__ == "__main__":
         parsed_args.port,
         parsed_args.ws,
         parsed_args.user,
-        parsed_args.ignore_filename,
     )
