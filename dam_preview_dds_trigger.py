@@ -21,7 +21,7 @@ p4.connect()
 
 
 def gen_dds_dam_preview_attr(depot_path: str):
-    with tempfile.TemporaryDirectory(dir='/home/perforce') as temp_dir:
+    with tempfile.TemporaryDirectory() as temp_dir:
         filepath = os.path.join(temp_dir, get_random_word())
         img_path = ".".join([filepath, "png"])
 
