@@ -51,6 +51,7 @@ def get_random_word(length=12):
 
 def main(changelist):
     description = p4.run_describe(changelist)
-    for depot_file in description[0]["depotFile"]:
+    for i, depot_file in enumerate(description[0]["depotFile"]):
         if depot_file.lower().endswith(".dds"):
-            gen_dds_dam_preview_attr(f"{depot_file}@{changelist}")
+            if 'delete' not in description[0]['action'][i]:
+                gen_dds_dam_preview_attr(f"{depot_file}@{changelist}")
