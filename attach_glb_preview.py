@@ -2,15 +2,13 @@
 from __future__ import print_function
 
 import os
-import binascii
 
 import subprocess
 import argparse
 
 
 def attach_glb_preview_attr(selected_asset, thumb_path, glb_path):
-    file_dir, file_name = os.path.split(selected_asset)
-
+    """Currently this simple script relies on your p4 env variables to operate correctly. you can check these witht eh p4 set cli command """
     attr_path_dict = {
         'thumb': thumb_path,
         'preview': thumb_path,
@@ -18,13 +16,12 @@ def attach_glb_preview_attr(selected_asset, thumb_path, glb_path):
     }
 
     for attr, file_path in attr_path_dict.items():
-        commands = ["p4", "attribute", "-f", "-I", file_path, "-n", attr, file_name]
+        commands = ["p4", "attribute", "-f", "-I", file_path, "-n", attr, selected_asset]
         proc = subprocess.Popen(
             commands,
             stdout=subprocess.PIPE,
             stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            cwd=file_dir,
         )
 
         attr_stdout = proc.communicate()[0]
@@ -37,14 +34,13 @@ def attach_glb_preview_attr(selected_asset, thumb_path, glb_path):
     }
 
     for attr, value_str in simple_attr_dict.items():
-        commands = ["p4", "attribute", "-fi", "-n", attr, file_name]
+        commands = ["p4", "attribute", "-fi", "-n", attr, selected_asset]
         byte_string = bytes(value_str, "utf-8")
         proc = subprocess.Popen(
             commands,
             stdout=subprocess.PIPE,
             stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            cwd=file_dir,
         )
 
         attr_stdout = proc.communicate(input=byte_string)[0]
