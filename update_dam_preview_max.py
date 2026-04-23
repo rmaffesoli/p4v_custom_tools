@@ -47,6 +47,36 @@ def genMaxThumbs():
 
                 attr_stdout = p.communicate(input=hex_string)[0]
                 print(attr_stdout.decode())
+    genMaxGlb()
+
+def genMaxGlb():
+    file_dir = mxs.maxFilePath
+    file_name = mxs.maxFileName
+    
+    if not (file_dir and file_name):
+        print("No valid File Path")
+        
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        filepath = os.path.join(tmp_dir, get_random_word())
+        glb_path = ".".join([filepath, "glb"])
+    
+        pymxs.runtime.exportFile(glb_path, pymxs.runtime.name("noPrompt"), selectedOnly=False, using=pymxs.runtime.gltf_export)
+
+        commands = ["p4", "attribute", "-f", "-I", glb_path, "-n", 'model', file_name]
+        proc = subprocess.Popen(
+            commands,
+            stdout=subprocess.PIPE,
+            stdin=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            cwd=file_dir,
+        )
+
+        attr_stdout = proc.communicate()[0]
+        print(attr_stdout.decode())
+
+
+def get_random_word(length=12):
+    return "".join(random.sample(string.ascii_letters, length))
 
 
 def menu_callback():
